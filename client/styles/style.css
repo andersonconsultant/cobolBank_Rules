@@ -1,0 +1,76 @@
+/* Estilos globais */
+body {
+  font-family: 'Arimo', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #00698f;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background-color: #0077b6;
+  padding: 20px;
+}
+
+.iconLogo {
+  align-content: center;
+  display: flex;
+  max-width: 160px;
+  max-height: auto;
+  margin-bottom: 40px;
+}
+
+
+.sidebar button {
+  margin-left: 0px;
+  width: 100%;
+  margin-bottom: 5px;
+  background-color: #0077b6;
+  color: #c9dbff;
+}
+
+.sidebar-button {
+  background-color: #0077b6;
+  color: #fff;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.sidebar-button:hover {
+  /* background-color: #026ba4; */
+  text-shadow: 
+    0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 5px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 15px rgba(0, 255, 255, 0.5);
+  
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Conteúdo central */
+.content-central {
+  margin-left: 220px;
+  padding: 10px;
+}
+
+.iconButton {
+  margin-left: 0px;
+  max-width: 40px;
+  height: 25px;
+}
+
+
