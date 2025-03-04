@@ -65,14 +65,45 @@ sudo pg_ctlcluster 16 main restart
 Após reiniciar, verifique se o cluster está ativo com:
 
 bash
-Copy
+
+
 Edit
 sudo pg_lsclusters
 E confirme que o socket foi criado em /var/run/postgresql/ ou que você consegue conectar via TCP:
 
 bash
-Copy
+
+
 Edit
 psql -h localhost
 
- psql -U server -d coboldb -h localhost -p 5432
+psql -U server -d cobolbd -h localhost -p 5432
+
+ 1402  psql -U server -d cobolbd -h localhost -p 5432
+ 1405  psql -h localhost -U server -W
+ 1406  psql -h localhost -U cobolbd -W
+ 1407  psql -h localhost -U server cobolbd -W
+ sudo -u postgres psql
+
+  cobc -x -free -o meu_programa myprogram.cob 
+
+  cobc -x -free -o teste teste.cob -lodbc
+
+   1605  cobc -x -free -o teste teste.cob -L/usr/lib/x86_64-linux-gnu -lodbc -Wl,-rpath,/usr/lib/x86_64-linux-gnu
+ 1607  cobc -x -free -o teste teste.cob -L/usr/lib/x86_64-linux-gnu -lodbc
+
+  export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libodbc.so
+
+export COB_LIBRARY_PATH=$COB_LIBRARY_PATH:/srv/fulljavascript/api/teste
+echo $COB_LIBRARY_PATH
+:/srv/fulljavascript/api/teste
+
+
+      cobc -c -free -o allocate.o allocate.cob -L/usr/lib/x86_64-linux-gnu
+      cobc -x -free -o ../bin/allocate ../dev/allocate.cob -L/usr/lib/x86_64-linux-gnu -lodbc
+      export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libodbc.so
+
+
+      isql -v cobolbd server pwdbd123
+
+      sudo tail -n 50 /var/log/postgresql/postgresql-*-main.log

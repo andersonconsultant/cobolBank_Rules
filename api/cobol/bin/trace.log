@@ -1,0 +1,431 @@
+execve("./allocate", ["./allocate"], 0x7ffe5ec34e20 /* 43 vars */) = 0
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/libodbc.so", O_RDONLY|O_CLOEXEC) = 3
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libcob.so.4", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libltdl.so.7", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgmp.so.10", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libxml2.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libncursesw.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libtinfo.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libdb-5.3.so", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libicuuc.so.74", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libz.so.1", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libicudata.so.74", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libstdc++.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgcc_s.so.1", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/etc/gnucobol/runtime.cfg", O_RDONLY) = 3
+openat(AT_FDCWD, "/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/usr/share/locale/en_US.UTF-8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US.utf8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.UTF-8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.utf8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US.UTF-8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US.utf8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en.UTF-8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en.utf8/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en/LC_MESSAGES/gnucobol.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+newfstatat(AT_FDCWD, ".", {st_mode=S_IFDIR|0775, st_size=4096, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/gnucobol", 0x7ffdaf29b8a0, 0) = -1 ENOENT (No such file or directory)
+access("/proc/self/exe", R_OK)          = 0
+readlink("/proc/self/exe", "/srv/fulljavascript/api/cobol/bi"..., 16383) = 42
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+newfstatat(AT_FDCWD, "/", {st_mode=S_IFDIR|0755, st_size=4096, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/nsswitch.conf", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/odbc/psqlodbcw.so", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpq.so.5", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libodbcinst.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libssl.so.3", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libcrypto.so.3", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgssapi_krb5.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libldap.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libkrb5.so.3", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libk5crypto.so.3", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libcom_err.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libkrb5support.so.0", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/liblber.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libsasl2.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libgnutls.so.30", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libkeyutils.so.1", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libresolv.so.2", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libp11-kit.so.0", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libidn2.so.0", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libunistring.so.5", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libtasn1.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libnettle.so.8", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libhogweed.so.6", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libffi.so.8", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(AT_FDCWD, "/etc/gnutls/config", {st_mode=S_IFREG|0644, st_size=119, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/gnutls/config", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/odbcinst.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/home/server/.odbcinst.ini", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US.UTF-8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US.utf8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.UTF-8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.utf8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US.UTF-8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US.utf8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en.UTF-8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en.utf8/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en/LC_MESSAGES/libc.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_WRONLY|O_CREAT|O_APPEND, 0666) = 3
+openat(AT_FDCWD, "/home/server/.odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+openat(AT_FDCWD, "/etc/odbc.ini", O_RDONLY) = 3
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 3
+newfstatat(AT_FDCWD, "/home/server/.pgpass", 0x7ffdaf291450, 0) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US.UTF-8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US.utf8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en_US/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.UTF-8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en.utf8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/en/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US.UTF-8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US.utf8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en_US/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en.UTF-8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en.utf8/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale-langpack/en/LC_MESSAGES/libpq5-16.mo", O_RDONLY) = -1 ENOENT (No such file or directory)
+readlink("/proc/self/exe", "/srv/fulljavascript/api/cobol/bi"..., 256) = 42
+newfstatat(AT_FDCWD, "/etc/nsswitch.conf", {st_mode=S_IFREG|0644, st_size=594, ...}, 0) = 0
+openat(AT_FDCWD, "/etc/passwd", O_RDONLY|O_CLOEXEC) = 4
+openat(AT_FDCWD, "/tmp/psqlodbc_allocate_server36364.log", O_WRONLY|O_CREAT|O_APPEND, 0666) = 4
++++ exited with 0 +++
