@@ -5,7 +5,7 @@ document.getElementById('botao-click').addEventListener('click', function() {
 const initCobol = document.getElementById('buttonStartCobol');
 
 initCobol.addEventListener('click', () => {
-  fetch('/api/cobol')
+  fetch('/api/cobol/bin')
     .then(response => response.json())
     .then(data => {
       console.log(data);

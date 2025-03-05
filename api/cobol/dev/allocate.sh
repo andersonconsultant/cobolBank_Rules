@@ -1,0 +1,1 @@
+cobc -x -free -o allocate allocate.cob -L/usr/lib/x86_64-linux-gnu -lodbc

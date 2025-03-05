@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 // Rota para executar o programa COBOL
-app.get('/api/cobol/bin', (req, res) => {
+app.get('/cobol', (req, res) => {
   exec(path.join(__dirname, 'start'), (error, stdout, stderr) => {
     if (error) {
       console.error(`Erro: ${error.message}`);
