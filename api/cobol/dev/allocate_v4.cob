@@ -1,4 +1,4 @@
-*> Versão 3: Ajustes para melhorar a manutenção do código
+*> Versão 4: Ajustes para melhorar a manutenção do código
 *> COBOL Free-Format - Template para Manutenção
        *> Regras Importantes:
        *> 1. Não use ponto final ao fim de instruções dentro de blocos IF;
