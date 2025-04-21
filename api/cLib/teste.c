@@ -26,12 +26,13 @@ int main(){
         printf("%d\n", vetor[i]);
     }
 
-    // Libera a memória alocada
-    free(vetor);
-    printf("Memoria liberada\n");
+    // // Libera a memória alocada
+    // free(vetor);
+    // printf("Memoria liberada\n");
 
 
     int index, value;
+
 
     // Lendo o índice e o valor para alterar no vetor
     printf("Digite o índice do vetor que deseja alterar: ");
@@ -48,8 +49,18 @@ int main(){
     } else {
         printf("Índice inválido!\n");
     }
+
+    //Printando cenário de vetores após alterações realizadas.
+    printf("Cenario completo de vetores atualizado:\n");
+
+    for(int i = 0; i < tam; i++){
+        printf("%d\n", vetor[i]);
+    }
+
+
+    //Libera memória para os vetores/ponteiros definidos 
     free(vetor);
-    printf("Memoria liberada\n");
+    printf("\nMemoria liberada\n");
     return 0;
 
 }
