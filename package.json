@@ -1,0 +1,14 @@
+{
+  "name": "cobol-rules-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "iconv-lite": "^0.6.3"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
