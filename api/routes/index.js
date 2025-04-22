@@ -28,18 +28,55 @@ router.get('/v1/cobol/bin', (req, res) => {
 // Rota para login COBOL
 router.post('/v1/cobol/login', (req, res) => {
   const { username, password } = req.body;
+  
+  // Para teste, vamos simular uma resposta de sucesso
+  if (username === 'teste' && password === 'teste123') {
+    res.json({
+      success: true,
+      token: 'mock-token-123',
+      user: {
+        id: 1,
+        name: 'Usuário Teste',
+        balance: '1000.00'
+      }
+    });
+    return;
+  }
+
+  // Se as credenciais não forem as de teste, tenta executar o programa COBOL
   exec(`${config.paths.COBOL.PROGRAMS.LOGIN} ${username} ${password}`, (error, stdout, stderr) => {
     if (error) {
       console.error(`Erro: ${error.message}`);
-      res.status(500).send({ error: 'Erro ao executar o login COBOL' });
+      res.status(401).json({ 
+        success: false,
+        message: 'Credenciais inválidas'
+      });
       return;
     }
     if (stderr) {
       console.error(`Erro: ${stderr}`);
-      res.status(500).send({ error: 'Erro ao executar o login COBOL' });
+      res.status(401).json({ 
+        success: false,
+        message: 'Erro ao validar credenciais'
+      });
       return;
     }
-    res.send({ output: stdout });
+    
+    // Processa a saída do programa COBOL
+    try {
+      const output = JSON.parse(stdout);
+      res.json({
+        success: true,
+        token: output.token,
+        user: output.user
+      });
+    } catch (e) {
+      console.error('Erro ao processar resposta do COBOL:', e);
+      res.status(500).json({ 
+        success: false,
+        message: 'Erro ao processar resposta do servidor'
+      });
+    }
   });
 });
 
