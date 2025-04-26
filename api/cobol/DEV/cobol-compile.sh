@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configurações do ambiente
-OCESQL_HOME="/home/server/Open-COBOL-ESQL-1.4"
+OCESQL_HOME="/srv/Open-COBOL-ESQL-1.4"
 COPY_DIR="$OCESQL_HOME/copy"
 LIB_DIR="/usr/local/lib"
 

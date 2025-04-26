@@ -9,6 +9,7 @@
     "iconv-lite": "^0.6.3"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "cd api && node index.js"
   }
 }

@@ -1,0 +1,6 @@
+CREATE OR REPLACE FUNCTION get_saldo()
+RETURNS NUMERIC(12,2) AS $$
+BEGIN
+    RETURN (SELECT saldo());
+END;
+$$ LANGUAGE plpgsql; 
