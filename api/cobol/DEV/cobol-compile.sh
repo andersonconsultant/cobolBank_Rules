@@ -50,9 +50,10 @@ build_and_run() {
     # Passo 2: Compilação com cobc
     log_status "Compilando com GnuCOBOL..."
     cobc -x -o "$output_name" "$source_file.pre" \
-        -I"$COPY_DIR" \
-        -L"$LIB_DIR" \
-        -locesql
+    bin/util.o \
+    -I"$COPY_DIR" \
+    -L"$LIB_DIR" \
+    -locesql
     if [ $? -ne 0 ]; then
         log_error "Falha na compilação"
     fi

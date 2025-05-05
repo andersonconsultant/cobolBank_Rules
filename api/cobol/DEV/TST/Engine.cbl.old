@@ -20,34 +20,21 @@
        DATA                        DIVISION.
       ******************************************************************
        WORKING-STORAGE             SECTION.
-OCESQL*EXEC SQL BEGIN DECLARE SECTION END-EXEC.
+       EXEC SQL BEGIN DECLARE SECTION END-EXEC.
        01  DBNAME                  PIC  X(30) VALUE SPACE.
        01  USERNAME                PIC  X(30) VALUE SPACE.
        01  PASSWD                  PIC  X(10) VALUE SPACE.
        01  SALDO-RESULT           PIC 9(10)V99 VALUE 0.
        01  TRANSFER-RESULT        PIC X(500) VALUE SPACES.
-OCESQL*EXEC SQL END DECLARE SECTION END-EXEC.
+       01  WS-CONN-PID            PIC 9(10) VALUE 0.
+       EXEC SQL END DECLARE SECTION END-EXEC.
 
        01  WS-CMD                 PIC X(10) VALUE SPACE.
        01  WS-DB-STARTED          PIC X(1)  VALUE "N".
 
-OCESQL*EXEC SQL INCLUDE SQLCA END-EXEC.
-OCESQL     copy "sqlca.cbl".
+       EXEC SQL INCLUDE SQLCA END-EXEC.
 
       ******************************************************************
-OCESQL*
-OCESQL 01  SQ0001.
-OCESQL     02  FILLER PIC X(014) VALUE "SELECT saldo()".
-OCESQL     02  FILLER PIC X(1) VALUE X"00".
-OCESQL*
-OCESQL 01  SQ0002.
-OCESQL     02  FILLER PIC X(021) VALUE "SELECT get_transfer()".
-OCESQL     02  FILLER PIC X(1) VALUE X"00".
-OCESQL*
-OCESQL 01  SQ0003.
-OCESQL     02  FILLER PIC X(014) VALUE "DISCONNECT ALL".
-OCESQL     02  FILLER PIC X(1) VALUE X"00".
-OCESQL*
        PROCEDURE                   DIVISION.
       ******************************************************************
        MAIN-RTN.
@@ -71,23 +58,15 @@ OCESQL*
            MOVE "server"    TO   USERNAME
            MOVE "pwdbd123" TO   PASSWD
            
-OCESQL*    EXEC SQL
-OCESQL*        CONNECT :USERNAME IDENTIFIED BY :PASSWD USING :DBNAME 
-OCESQL*    END-EXEC
-OCESQL     CALL "OCESQLConnect" USING
-OCESQL          BY REFERENCE SQLCA
-OCESQL          BY REFERENCE USERNAME
-OCESQL          BY VALUE 30
-OCESQL          BY REFERENCE PASSWD
-OCESQL          BY VALUE 10
-OCESQL          BY REFERENCE DBNAME
-OCESQL          BY VALUE 30
-OCESQL     END-CALL
+           EXEC SQL
+               CONNECT :USERNAME IDENTIFIED BY :PASSWD USING :DBNAME 
+           END-EXEC
            
            IF SQLCODE NOT = ZERO 
               PERFORM ERROR-RTN
            ELSE
               MOVE "S" TO WS-DB-STARTED
+              
               DISPLAY "1\"
               DISPLAY "#Conexao com o banco iniciada com sucesso"
            END-IF
@@ -134,25 +113,9 @@ OCESQL     END-CALL
 
        GET-SALDO.
       *    Execute SELECT saldo()
-OCESQL*    EXEC SQL
-OCESQL*        SELECT saldo() INTO :SALDO-RESULT
-OCESQL*    END-EXEC
-OCESQL     CALL "OCESQLStartSQL"
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLSetResultParams" USING
-OCESQL          BY VALUE 1
-OCESQL          BY VALUE 12
-OCESQL          BY VALUE -2
-OCESQL          BY REFERENCE SALDO-RESULT
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLExecSelectIntoOne" USING
-OCESQL          BY REFERENCE SQLCA
-OCESQL          BY REFERENCE SQ0001
-OCESQL          BY VALUE 0
-OCESQL          BY VALUE 1
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLEndSQL"
-OCESQL     END-CALL
+           EXEC SQL
+               SELECT saldo() INTO :SALDO-RESULT
+           END-EXEC
 
            IF SQLCODE NOT = ZERO
               PERFORM ERROR-RTN
@@ -162,25 +125,9 @@ OCESQL     END-CALL
 
        GET-EXTRATO.
       *    Execute SELECT get_transfer()
-OCESQL*    EXEC SQL
-OCESQL*        SELECT get_transfer() INTO :TRANSFER-RESULT
-OCESQL*    END-EXEC
-OCESQL     CALL "OCESQLStartSQL"
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLSetResultParams" USING
-OCESQL          BY VALUE 16
-OCESQL          BY VALUE 500
-OCESQL          BY VALUE 0
-OCESQL          BY REFERENCE TRANSFER-RESULT
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLExecSelectIntoOne" USING
-OCESQL          BY REFERENCE SQLCA
-OCESQL          BY REFERENCE SQ0002
-OCESQL          BY VALUE 0
-OCESQL          BY VALUE 1
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLEndSQL"
-OCESQL     END-CALL
+           EXEC SQL
+               SELECT get_transfer() INTO :TRANSFER-RESULT
+           END-EXEC
 
            IF SQLCODE NOT = ZERO
               PERFORM ERROR-RTN
@@ -191,12 +138,9 @@ OCESQL     END-CALL
        FIM-PROGRAMA.
       *    DISCONNECT from database
            IF WS-DB-STARTED = "S"
-OCESQL*        EXEC SQL
-OCESQL*            DISCONNECT ALL
-OCESQL*        END-EXEC
-OCESQL     CALL "OCESQLDisconnect" USING
-OCESQL          BY REFERENCE SQLCA
-OCESQL     END-CALL
+               EXEC SQL
+                   DISCONNECT ALL
+               END-EXEC
                DISPLAY "0\"
                DISPLAY "#Conexao com o banco finalizada"
            END-IF

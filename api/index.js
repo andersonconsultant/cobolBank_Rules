@@ -11,6 +11,9 @@ const { logRequest, logResponse, logError, logInfo } = require('../../scripts/lo
 
 const app = express();
 
+// Habilita o Express a confiar nos cabeçalhos X-Forwarded-For (geralmente necessário quando se está atrás de um proxy reverso)
+app.set('trust proxy', 1); // Pode ser 1, 'loopback', 'linklocal', ou 'uniquelocal' dependendo do seu caso
+
 // Rate Limiting
 const apiLimiter = rateLimit({
     windowMs: 60 * 1000, // 1 minuto
