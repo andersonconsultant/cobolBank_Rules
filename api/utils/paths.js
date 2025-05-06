@@ -1,29 +1,53 @@
 const path = require('path');
 
-// Obtém o diretório raiz do projeto (2 níveis acima da pasta api)
-const PROJECT_ROOT = path.resolve(__dirname, '../../../');
+// Função para resolver caminhos relativos ao projeto
+const resolveProjectPath = (...segments) => path.join(__dirname, '..', '..', '..', ...segments);
 
-function resolveProjectPath(...segments) {
-    return path.join(PROJECT_ROOT, ...segments);
-}
+// Padrões de arquivos estáticos
+const staticPatterns = [
+    /\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$/i,
+    /^\/static\//,
+    /^\/assets\//,
+    /^\/js\//,
+    /^\/components\//,
+    /^\/services\//,
+    /^\/styles\//
+];
+
+// Função para verificar se um caminho é de arquivo estático
+const isStaticFile = (path) => {
+    return staticPatterns.some(pattern => {
+        if (pattern instanceof RegExp) {
+            return pattern.test(path);
+        }
+        return path.startsWith(pattern);
+    });
+};
+
+// Caminhos da aplicação
+const paths = {
+    root: resolveProjectPath(),
+    client: {
+        root: resolveProjectPath('client'),
+        assets: resolveProjectPath('client', 'assets'),
+        js: resolveProjectPath('client', 'js'),
+        components: resolveProjectPath('client', 'components'),
+        services: resolveProjectPath('client', 'services'),
+        styles: resolveProjectPath('client', 'styles'),
+        html: {
+            index: resolveProjectPath('client', 'index.html')
+        }
+    },
+    api: {
+        root: resolveProjectPath('Rules', 'api'),
+        routes: resolveProjectPath('Rules', 'api', 'routes'),
+        middleware: resolveProjectPath('Rules', 'api', 'middleware'),
+        utils: resolveProjectPath('Rules', 'api', 'utils')
+    }
+};
 
 module.exports = {
-    PROJECT_ROOT,
+    paths,
     resolveProjectPath,
-    paths: {
-        config: resolveProjectPath('config.json'),
-        client: {
-            root: resolveProjectPath('client'),
-            styles: resolveProjectPath('client/styles'),
-            images: resolveProjectPath('client/images'),
-            fonts: resolveProjectPath('client/fonts'),
-            html: {
-                index: resolveProjectPath('client/index.html')
-            }
-        },
-        api: {
-            root: resolveProjectPath('Rules/api'),
-            cobol: resolveProjectPath('Rules/api/cobol')
-        }
-    }
-}; 
+    isStaticFile
+};

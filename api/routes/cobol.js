@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cobolService = require('../services/cobol');
-const { logError } = require('../../../scripts/logger');
+const { logError } = require('../utils/logger/console-logger');
 
 // Health check
 router.get('/health', (req, res) => {

@@ -5,19 +5,23 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const { validationResult } = require('express-validator');
 const { paths } = require('./utils/paths');
-const config = require(paths.config);
+const config = require('../../config');
 const routes = require('./routes');
-const { logRequest, logResponse, logError, logInfo } = require('../../scripts/logger');
+
+// Importa os novos middlewares
+const { staticMiddleware, staticLogger } = require('./middleware/static');
+const { cobolMiddleware, CobolProcessor } = require('./middleware/cobol');
+const { loggerMiddleware, errorLoggerMiddleware, requestMetrics } = require('./middleware/logger');
 
 const app = express();
 
-// Habilita o Express a confiar nos cabeçalhos X-Forwarded-For (geralmente necessário quando se está atrás de um proxy reverso)
-app.set('trust proxy', 1); // Pode ser 1, 'loopback', 'linklocal', ou 'uniquelocal' dependendo do seu caso
+// Configurações básicas
+app.set('trust proxy', 1);
 
-// Rate Limiting
+// Rate Limiting para API
 const apiLimiter = rateLimit({
-    windowMs: 60 * 1000, // 1 minuto
-    max: 10, // 10 requisições por minuto
+    windowMs: 60 * 1000,
+    max: 10,
     message: {
         success: false,
         error: 'Limite de requisições excedido',
@@ -25,7 +29,7 @@ const apiLimiter = rateLimit({
         retryAfter: '1 minuto',
         code: 'RATE_LIMIT_EXCEEDED'
     },
-    standardHeaders: true, // Retorna os headers `RateLimit-*`
+    standardHeaders: true,
     legacyHeaders: false,
     handler: (req, res) => {
         const retryAfter = Math.ceil(req.rateLimit.resetTime - Date.now()) / 1000;
@@ -44,52 +48,95 @@ const apiLimiter = rateLimit({
     }
 });
 
-// Middleware para logging de requisições
-app.use((req, res, next) => {
-    req.startTime = Date.now(); // Para calcular duração da requisição
-    logRequest(req);
-    
-    // Intercepta a resposta para logging
-    const oldSend = res.send;
-    res.send = function(data) {
-        logResponse(req, res, data);
-        return oldSend.apply(res, arguments);
-    };
-    
-    next();
-});
-
-// Middlewares de Segurança
-app.use(helmet()); // Segurança básica de headers
-app.use('/api', apiLimiter); // Rate limiting apenas para rotas da API
-app.use(cors(config.server.cors));
-app.use(bodyParser.json({
-    limit: '10kb' // Limita tamanho do payload
+// 1. Middlewares de Segurança (primeiro, pois são mais leves e críticos)
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://cdn.jsdelivr.net"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com"],
+            imgSrc: ["'self'", "data:", "https:"],
+            fontSrc: ["'self'", "https://cdnjs.cloudflare.com"],
+            connectSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            mediaSrc: ["'self'"],
+            frameSrc: ["'none'"]
+        }
+    },
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
+app.use(cors(config.server.cors));
+app.use(bodyParser.json({ limit: '10kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Middleware de validação global
-app.use((err, req, res, next) => {
-    if (err instanceof SyntaxError && 'body' in err) {
-        return res.status(400).json({ error: 'JSON inválido' });
-    }
-    
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    
-    next();
-});
+// 2. Arquivos Estáticos (antes de qualquer processamento pesado)
+if (!process.env.BACKEND_ONLY) {
+    // Middleware de arquivos estáticos com logging simplificado
+    app.use(staticMiddleware({
+        enableLogging: true,
+        ignorePaths: config.logging?.static?.ignorePaths || []
+    }));
 
-// Rotas da API (apenas para /api/*)
-app.use('/api', routes);
+    // Configuração para servir arquivos estáticos
+    const staticOptions = {
+        setHeaders: (res, path) => {
+            // Define o tipo MIME correto para módulos ES6
+            if (path.endsWith('.js')) {
+                res.set('Content-Type', 'application/javascript; charset=UTF-8');
+            }
+            if (path.endsWith('.mjs') || path.match(/\.js\?.*$/)) {
+                res.set('Content-Type', 'application/javascript; charset=UTF-8');
+            }
+            // Cache control já é definido no staticMiddleware
+        }
+    };
 
-// Tratamento de erros da API melhorado
+    // Servir arquivos estáticos em ordem específica
+    app.use('/assets', express.static(paths.client.assets, { ...staticOptions, index: false }));
+    app.use('/js', express.static(paths.client.js, { ...staticOptions, index: false }));
+    app.use('/components', express.static(paths.client.components, { ...staticOptions, index: false }));
+    app.use('/services', express.static(paths.client.services, { ...staticOptions, index: false }));
+    app.use('/styles', express.static(paths.client.styles, { ...staticOptions, index: false }));
+    // Servir index.html e outros arquivos da raiz
+    app.use(express.static(paths.client.root, staticOptions));
+}
+
+// 3. Logging para rotas dinâmicas
+app.use(loggerMiddleware({
+    logStatic: false, // Já temos logging otimizado para estáticos
+    logMetrics: true,
+    ignorePaths: config.logging?.ignorePaths || []
+}));
+
+// 4. Rotas da API com seus middlewares específicos
+app.use('/api', [
+    // Rate limiting primeiro
+    apiLimiter,
+    
+    // Validação de requisições
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        next();
+    },
+    
+    // COBOL middleware (lazy loading)
+    cobolMiddleware({
+        required: false, // Não bloqueia se COBOL não estiver disponível
+        maxRetries: config.cobol?.maxRetries || 3
+    }),
+    
+    // Rotas
+    routes
+]);
+
+// 5. Error handlers
+app.use(errorLoggerMiddleware());
 app.use('/api', (err, req, res, next) => {
-    logError(err, req);
-    
-    // Tratamento de erros mais específico
+    // Tratamento específico para erros de validação
     if (err.type === 'validation') {
         return res.status(400).json({
             error: 'Erro de validação',
@@ -105,40 +152,40 @@ app.use('/api', (err, req, res, next) => {
     res.status(err.status || 500).json({ error });
 });
 
-// Se não estiver em modo backend-only, serve os arquivos estáticos
-if (!process.env.BACKEND_ONLY) {
-    logInfo('Modo integrado - Servindo arquivos estáticos:', {
-        root: paths.client.root,
-        styles: paths.client.styles,
-        images: paths.client.images,
-        fonts: paths.client.fonts,
-        index: paths.client.html.index
+// Endpoint para métricas (apenas em desenvolvimento)
+if (process.env.NODE_ENV === 'development') {
+    app.get('/_metrics', (req, res) => {
+        res.json({
+            static: staticLogger.getStats(),
+            requests: requestMetrics.getMetrics(),
+            cobol: CobolProcessor.instance?.getHealth() || { status: 'NOT_INITIALIZED' }
+        });
     });
+}
 
-    // Servir arquivos estáticos do frontend
-    app.use(express.static(paths.client.root));
-    app.use('/styles', express.static(paths.client.styles));
-    app.use('/images', express.static(paths.client.images));
-    app.use('/fonts', express.static(paths.client.fonts));
-
-    // Todas as outras rotas servem o frontend (SPA)
-    app.get('*', (req, res) => {
+// 6. Rota catch-all para SPA em modo não-backend (deve ser a última)
+if (!process.env.BACKEND_ONLY) {
+    app.get('*', (req, res, next) => {
+        // Não enviar index.html para requisições de API
+        if (req.path.startsWith('/api')) {
+            return next();
+        }
+        // Envia index.html para todas as outras rotas
         res.sendFile(paths.client.html.index);
     });
-} else {
-    logInfo('Modo backend-only - Apenas API disponível');
 }
 
 // Inicia o servidor
 const PORT = process.env.PORT || config.server.port || 3000;
 const HOST = config.server.host || '0.0.0.0';
+
 app.listen(PORT, HOST, () => {
-    logInfo('🚀 Servidor iniciado', {
-        url: `http://${HOST}:${PORT}`,
-        mode: process.env.BACKEND_ONLY ? 'backend-only' : 'integrated',
-        endpoints: {
-            api: `http://localhost:${PORT}/api`,
-            ...(process.env.BACKEND_ONLY ? {} : { frontend: `http://localhost:${PORT}` })
-        }
-    });
+    console.log(`
+🚀 Servidor iniciado em http://${HOST}:${PORT}
+📝 Modo: ${process.env.BACKEND_ONLY ? 'backend-only' : 'integrated'}
+🔍 Endpoints:
+   - API: http://localhost:${PORT}/api
+   ${process.env.BACKEND_ONLY ? '' : '- Frontend: http://localhost:' + PORT}
+   ${process.env.NODE_ENV === 'development' ? '- Métricas: http://localhost:' + PORT + '/_metrics' : ''}
+`);
 });

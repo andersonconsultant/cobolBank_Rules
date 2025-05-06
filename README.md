@@ -1,6 +1,12 @@
 # 🏦 CobolBank Rules Engine
 
+🔄 Este repositório contém o motor de regras e a integração COBOL do projeto **CobolBank**. Para acessar o front-end e gateway:
+
+👉 [Acesse o repositório principal com UI moderna](https://github.com/andersonconsultant/cobolBank_Project)
+
+
 *[English](#english) | [Português](#português)*
+
 
 ---
 

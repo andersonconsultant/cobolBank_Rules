@@ -1,19 +1,8 @@
 const path = require('path');
-const fs = require('fs');
 
 // Carrega o arquivo de configuração central
-const configPath = path.join(__dirname, '../../config.json');
-console.log('Tentando ler o arquivo de configuração em:', configPath);
-console.log('Diretório atual:', __dirname);
-
-let config;
-try {
-    config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-    console.log('Configuração carregada com sucesso');
-} catch (error) {
-    console.error('Erro ao carregar configuração:', error);
-    throw error;
-}
+const config = require('../../config');
+console.log('Configuração carregada com sucesso');
 
 // Obtém o ambiente atual do config
 const environment = config.project.environment;
@@ -52,7 +41,6 @@ const API_ENDPOINTS = {
 const SERVER_CONFIG = {
     PORT: config.server.port,
     HOST: config.server.host,
-    BASE_URL: config.server.baseUrl,
     CORS_OPTIONS: config.server.cors
 };
 

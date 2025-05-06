@@ -49,11 +49,11 @@ build_and_run() {
 
     # Passo 2: Compilação com cobc
     log_status "Compilando com GnuCOBOL..."
-    cobc -x -o "$output_name" "$source_file.pre" \
-    bin/util.o \
+    cobc -x -o "bin/$output_name" "$source_file.pre" \
+    util.o \
     -I"$COPY_DIR" \
     -L"$LIB_DIR" \
-    -locesql
+    -locesql 
     if [ $? -ne 0 ]; then
         log_error "Falha na compilação"
     fi
@@ -62,7 +62,7 @@ build_and_run() {
     # Passo 3: Execução com LD_PRELOAD
     log_status "Executando o programa..."
     export LD_PRELOAD="$LIB_DIR/libocesql.so"
-    ./"$output_name"
+    ./"bin/$output_name"
     if [ $? -ne 0 ]; then
         log_error "Erro durante a execução do programa"
     fi

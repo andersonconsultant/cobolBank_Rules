@@ -59,8 +59,9 @@
          START-SQL.
       *    CONNECT
             MOVE "cobolbd"   TO   DBNAME
-            MOVE "server"    TO   USERNAME
-            MOVE "pwdbd123" TO   PASSWD
+            ACCEPT USERNAME FROM ENVIRONMENT "DB_USER".
+            ACCEPT PASSWD FROM ENVIRONMENT "DB_PASSWORD".
+
             
             EXEC SQL
                CONNECT :USERNAME IDENTIFIED BY :PASSWD USING :DBNAME 
@@ -83,7 +84,7 @@
                   MOVE SQLERRMC TO SQLERRMC-PASS
                   CALL 'util' USING SQLCODE-PASS, SQLSTATE-PASS, SQLERRMC-PASS
                   ELSE
-                     DISPLAY "1\CONNECTED\" WS-CONN-PID
+                     DISPLAY "1\STATUS\ID:" WS-CONN-PID
                      DISPLAY "#Conexao com o banco iniciada com sucesso"
                   END-IF
       *     INSERT ID           
@@ -113,15 +114,16 @@
             
             IF WS-CMD = "START"
                IF WS-DB-STARTED = "S"
-                  DISPLAY "Banco ja esta conectado"
+                  DISPLAY "1\STATUS"
+                  DISPLAY "#Banco ja esta conectado"
                   PERFORM WAIT-CMD
                ELSE
                   PERFORM START-SQL
                END-IF
             ELSE IF WS-CMD = "SALDO"
                IF WS-DB-STARTED = "N"
-                  DISPLAY "Banco nao conectado"
-                  DISPLAY "Digite START primeiro"
+                  DISPLAY "0\STATUS"
+                  DISPLAY "#Banco nao conectado - Digite START primeiro"
                   PERFORM WAIT-CMD
                ELSE
                   PERFORM GET-SALDO
@@ -129,6 +131,7 @@
                END-IF
             ELSE IF WS-CMD = "EXTRATO"
                IF WS-DB-STARTED = "N"
+                  DISPLAY "0\STATUS"
                   DISPLAY "Banco nao conectado"
                   DISPLAY "Digite START primeiro"
                   PERFORM WAIT-CMD
@@ -139,7 +142,8 @@
       * TEST INIT
             ELSE IF WS-CMD = "UPDATE"
                IF WS-DB-STARTED = "N"
-               DISPLAY "Banco nao conectado"
+               DISPLAY "0\STATUS"
+               DISPLAY "#Banco nao conectado"
                PERFORM UPD-SQL
                PERFORM WAIT-CMD            
 
@@ -160,7 +164,12 @@
          UPD-SQL.
       *    Execute UPDATE updated_at()
             EXEC SQL
-               SELECT saldo() INTO :SALDO-RESULT
+               UPDATE sessions_pool
+               SET updated_at = now()
+               WHERE id = pg_backend_pid(); 
+            END-EXEC
+               EXEC SQL
+            COMMIT
             END-EXEC
 
             IF SQLCODE NOT = ZERO
@@ -169,7 +178,16 @@
             MOVE SQLERRMC TO SQLERRMC-PASS
             CALL 'util' USING SQLCODE-PASS, SQLSTATE-PASS, SQLERRMC-PASS
             ELSE
-               DISPLAY "saldo\" SALDO-RESULT
+               DISPLAY "1\INSERT #ID IS ON BANK!" WS-CONN-PID
+            END-IF
+
+            IF SQLCODE NOT = ZERO
+            MOVE SQLCODE TO SQLCODE-PASS
+            MOVE SQLSTATE TO SQLSTATE-PASS
+            MOVE SQLERRMC TO SQLERRMC-PASS
+            CALL 'util' USING SQLCODE-PASS, SQLSTATE-PASS, SQLERRMC-PASS
+            ELSE
+               DISPLAY "1\UPDATED"
             END-IF.
       
          GET-SALDO.
@@ -208,7 +226,7 @@
                EXEC SQL
                      DISCONNECT ALL
                END-EXEC
-               DISPLAY "1\DISCONNECTED" 
+               DISPLAY "0\STATUS" 
                DISPLAY "#Conexao com o banco finalizada"
             END-IF
             

@@ -51,7 +51,8 @@ OCESQL  &  "VALUES (pg_backend_pid())".
 OCESQL     02  FILLER PIC X(1) VALUE X"00".
 OCESQL*
 OCESQL 01  SQ0003.
-OCESQL     02  FILLER PIC X(014) VALUE "SELECT saldo()".
+OCESQL     02  FILLER PIC X(073) VALUE "UPDATE sessions_pool SET updat"
+OCESQL  &  "ed_at = now() WHERE id = pg_backend_pid() ;".
 OCESQL     02  FILLER PIC X(1) VALUE X"00".
 OCESQL*
 OCESQL 01  SQ0004.
@@ -86,8 +87,9 @@ OCESQL*
          START-SQL.
       *    CONNECT
             MOVE "cobolbd"   TO   DBNAME
-            MOVE "server"    TO   USERNAME
-            MOVE "pwdbd123" TO   PASSWD
+            ACCEPT USERNAME FROM ENVIRONMENT "DB_USER".
+            ACCEPT PASSWD FROM ENVIRONMENT "DB_PASSWORD".
+
             
 OCESQL*     EXEC SQL
 OCESQL*        CONNECT :USERNAME IDENTIFIED BY :PASSWD USING :DBNAME 
@@ -135,7 +137,7 @@ OCESQL     END-CALL
                   MOVE SQLERRMC TO SQLERRMC-PASS
                   CALL 'util' USING SQLCODE-PASS, SQLSTATE-PASS, SQLERRMC-PASS
                   ELSE
-                     DISPLAY "1\CONNECTED\" WS-CONN-PID
+                     DISPLAY "1\STATUS\ID:" WS-CONN-PID
                      DISPLAY "#Conexao com o banco iniciada com sucesso"
                   END-IF
       *     INSERT ID           
@@ -177,15 +179,16 @@ OCESQL     END-CALL
             
             IF WS-CMD = "START"
                IF WS-DB-STARTED = "S"
-                  DISPLAY "Banco ja esta conectado"
+                  DISPLAY "1\STATUS"
+                  DISPLAY "#Banco ja esta conectado"
                   PERFORM WAIT-CMD
                ELSE
                   PERFORM START-SQL
                END-IF
             ELSE IF WS-CMD = "SALDO"
                IF WS-DB-STARTED = "N"
-                  DISPLAY "Banco nao conectado"
-                  DISPLAY "Digite START primeiro"
+                  DISPLAY "0\STATUS"
+                  DISPLAY "#Banco nao conectado - Digite START primeiro"
                   PERFORM WAIT-CMD
                ELSE
                   PERFORM GET-SALDO
@@ -193,6 +196,7 @@ OCESQL     END-CALL
                END-IF
             ELSE IF WS-CMD = "EXTRATO"
                IF WS-DB-STARTED = "N"
+                  DISPLAY "0\STATUS"
                   DISPLAY "Banco nao conectado"
                   DISPLAY "Digite START primeiro"
                   PERFORM WAIT-CMD
@@ -203,7 +207,8 @@ OCESQL     END-CALL
       * TEST INIT
             ELSE IF WS-CMD = "UPDATE"
                IF WS-DB-STARTED = "N"
-               DISPLAY "Banco nao conectado"
+               DISPLAY "0\STATUS"
+               DISPLAY "#Banco nao conectado"
                PERFORM UPD-SQL
                PERFORM WAIT-CMD            
 
@@ -224,21 +229,22 @@ OCESQL     END-CALL
          UPD-SQL.
       *    Execute UPDATE updated_at()
 OCESQL*     EXEC SQL
-OCESQL*        SELECT saldo() INTO :SALDO-RESULT
+OCESQL*        UPDATE sessions_pool
+OCESQL*        SET updated_at = now()
+OCESQL*        WHERE id = pg_backend_pid(); 
+OCESQL*     END-EXEC
+OCESQL     CALL "OCESQLExec" USING
+OCESQL          BY REFERENCE SQLCA
+OCESQL          BY REFERENCE SQ0003
+OCESQL     END-CALL
+OCESQL*        EXEC SQL
+OCESQL*     COMMIT
 OCESQL*     END-EXEC
 OCESQL     CALL "OCESQLStartSQL"
 OCESQL     END-CALL
-OCESQL     CALL "OCESQLSetResultParams" USING
-OCESQL          BY VALUE 1
-OCESQL          BY VALUE 12
-OCESQL          BY VALUE -2
-OCESQL          BY REFERENCE SALDO-RESULT
-OCESQL     END-CALL
-OCESQL     CALL "OCESQLExecSelectIntoOne" USING
+OCESQL     CALL "OCESQLExec" USING
 OCESQL          BY REFERENCE SQLCA
-OCESQL          BY REFERENCE SQ0003
-OCESQL          BY VALUE 0
-OCESQL          BY VALUE 1
+OCESQL          BY REFERENCE "COMMIT" & x"00"
 OCESQL     END-CALL
 OCESQL     CALL "OCESQLEndSQL"
 OCESQL     END-CALL
@@ -249,7 +255,16 @@ OCESQL     END-CALL
             MOVE SQLERRMC TO SQLERRMC-PASS
             CALL 'util' USING SQLCODE-PASS, SQLSTATE-PASS, SQLERRMC-PASS
             ELSE
-               DISPLAY "saldo\" SALDO-RESULT
+               DISPLAY "1\INSERT #ID IS ON BANK!" WS-CONN-PID
+            END-IF
+
+            IF SQLCODE NOT = ZERO
+            MOVE SQLCODE TO SQLCODE-PASS
+            MOVE SQLSTATE TO SQLSTATE-PASS
+            MOVE SQLERRMC TO SQLERRMC-PASS
+            CALL 'util' USING SQLCODE-PASS, SQLSTATE-PASS, SQLERRMC-PASS
+            ELSE
+               DISPLAY "1\UPDATED"
             END-IF.
       
          GET-SALDO.
@@ -323,7 +338,7 @@ OCESQL*        END-EXEC
 OCESQL     CALL "OCESQLDisconnect" USING
 OCESQL          BY REFERENCE SQLCA
 OCESQL     END-CALL
-               DISPLAY "1\DISCONNECTED" 
+               DISPLAY "0\STATUS" 
                DISPLAY "#Conexao com o banco finalizada"
             END-IF
             

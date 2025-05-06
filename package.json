@@ -6,10 +6,23 @@
     "express": "^4.17.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "iconv-lite": "^0.6.3"
+    "iconv-lite": "^0.6.3",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "pg": "^8.11.3",
+    "jsonwebtoken": "^9.0.2",
+    "redis": "^4.6.13"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4",
+    "nodemon": "^3.0.3"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "cd api && node index.js"
+    "dev": "nodemon api/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint ."
   }
 }

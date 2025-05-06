@@ -1,5 +1,6 @@
-const { logInfo, logError } = require('../../../../scripts/logger');
-const config = require('/srv/cb_Project/config.json');
+const { paths } = require('../../utils/paths');
+const { logInfo, logError } = require('../../utils/logger/console-logger');
+const config = require('../../../../config');
 const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');

@@ -2,20 +2,22 @@ const express = require('express');
 const router = express.Router();
 const { exec } = require('child_process');
 const config = require('../config');
-const { logCobol, logInfo } = require('../../../scripts/logger');
+const { logCobol, logInfo } = require('../utils/logger');
 const balanceService = require('../services/balance');
 const { loginValidators, transactionValidators } = require('../middleware/validators');
 const { validationResult } = require('express-validator');
 const cobolRoutes = require('./cobol');
 
-// Mock data (similar ao Overview.js)
+// Mock data for initial testing
 const mockData = {
-    balance: 5432.10,
-    previousBalance: 4982.10,
-    lastUpdate: new Date(),
-    variation: {
-        percentage: 2.5,
-        direction: 'up'
+    saldo: {
+        raw: 5000.00,
+        anterior: "R$ 4.800,00",
+        variacao: {
+            percentual: 4.17,
+            direcao: "up"
+        },
+        ultimaAtualizacao: new Date().toISOString()
     }
 };
 
@@ -30,7 +32,7 @@ router.get('/v1/saldo', async (req, res) => {
         const result = await balanceService.getBalance();
         res.json(result);
     } catch (error) {
-        logInfo('SALDO', `Erro ao consultar saldo: ${error.message}`);
+        logCobol.logError('GET_SALDO', error);
         res.status(500).json({
             success: false,
             error: 'Erro ao consultar saldo',
@@ -147,6 +149,14 @@ router.post('/v1/cobol/transaction', transactionValidators, (req, res) => {
         return;
       }
       res.send({ output: stdout });
+    });
+});
+
+// Endpoint para saldo (mock)
+router.get('/v1/saldo', (req, res) => {
+    res.json({
+        success: true,
+        ...mockData
     });
 });
 

@@ -1,8 +1,9 @@
 const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
-const { logInfo, logError } = require('../../../../scripts/logger');
-const config = require('/srv/cb_Project/config.json');
+const { logInfo, logError } = require('../../utils/logger/console-logger');
+const { paths } = require('../../utils/paths');
+const config = require('../../../../config');
 
 const cobolPath = path.resolve(__dirname, '../../../../', config.executables.engine);
 
